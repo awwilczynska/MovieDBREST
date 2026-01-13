@@ -1,0 +1,24 @@
+# Python Specific
+__pycache__/
+*.pyc
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*.iml
+
+# Local Database
+movies.db
+movies-extended.db
+*.sqlite3
+
+# OS specific
+.DS_Store
+Thumbs.db
