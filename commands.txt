@@ -1,0 +1,109 @@
+### Endpoints for managing movies.db below ###
+
+FOR: @app.post('/movies')
+Invoke-WebRequest -Uri "http://localhost:8000/movies" `
+    -Method POST `
+    -Headers @{ "Content-Type" = "application/json" } `
+    -Body '{"title":"The Shawshank Redemption","year":"1994","actors":"Tim Robbins, Morgan Freeman"}' `
+    -UseBasicParsing
+
+@app.put('/movies/{movie_id}')
+Invoke-WebRequest -Uri "http://localhost:8000/movies/8" `
+    -Method PUT `
+    -Headers @{ "Content-Type" = "application/json" } `
+    -Body '{"title":"New movie", "year":"2000", "actors":"bla bla"}' `
+    -UseBasicParsing
+
+FOR: @app.delete('/movies/{movie_id}')
+curl.exe -X DELETE http://localhost:8000/movies/8
+
+FOR: @app.delete('/movies')
+curl.exe -X DELETE -H "Content-Type: application/json" -d "[6, 7]" http://localhost:8000/movies
+
+
+
+### Endpoints for managing movies-extended.db below ###
+
+FOR: @app.post('/movies-extended')
+Invoke-WebRequest -Uri "http://localhost:8000/movies-extended" `
+    -Method POST `
+    -Headers @{ "Content-Type" = "application/json" } `
+    -Body '{"title":"Test movie", "year":"2000", "director":"Test director", "description":"No description"}' `
+    -UseBasicParsing
+
+FOR: @app.put('/movies-extended/{movie_id}')
+Invoke-WebRequest -Uri "http://localhost:8000/movies-extended/9" `
+    -Method PUT `
+    -Headers @{ "Content-Type" = "application/json" } `
+    -Body '{"title":"New movie", "year":"2010", "director":"New director", "description":"New description"}' `
+    -UseBasicParsing
+
+FOR:@app.delete('/movies-extended/{movie_id}')
+curl.exe -X DELETE http://localhost:8000/movies-extended/11
+
+FOR: @app.delete('/movies-extended')
+curl.exe -X DELETE -H "Content-Type: application/json" -d "[9,10]" http://localhost:8000/movies-extended
+
+
+FOR: @app.post('/movies-extended/actors')
+Invoke-WebRequest -Uri "http://localhost:8000/movies-extended/actors" `
+    -Method POST `
+    -Headers @{ "Content-Type" = "application/json" } `
+    -Body '{"name":"Morgan","surname":"Free-man"}' `
+    -UseBasicParsing
+
+FOR: @app.put('/movies-extended/actors/{actor_id}')
+Invoke-WebRequest -Uri "http://localhost:8000/movies-extended/actors/21" `
+    -Method PUT `
+    -Headers @{ "Content-Type" = "application/json" } `
+    -Body '{"name":"Angelina", "surname":"Jolie"}' `
+    -UseBasicParsing  
+
+FOR: @app.delete('/movies-extended/actors/{actor_id}')
+curl.exe -X DELETE http://localhost:8000/movies-extended/actors/21
+
+ 
+
+### Endpoints for managing movies-extended-orm.db below ###
+
+FOR: @app.post('/orm/movies')
+Invoke-WebRequest -Uri "http://localhost:8000/orm/movies" `
+    -Method POST `
+    -Headers @{ "Content-Type" = "application/json" } `
+    -Body '{"title":"New movie", "year":"2000", "director":"Director", "description":"No description"}' `
+    -UseBasicParsing
+
+FOR: @app.put('/orm/movies/{movie_id}')
+Invoke-WebRequest -Uri "http://localhost:8000/orm/movies/9" `
+    -Method PUT `
+    -Headers @{ "Content-Type" = "application/json" } `
+    -Body '{"title":"New movie", "year":"2010", "director":"New director", "description":"New description"}' `
+    -UseBasicParsing
+
+FOR: @app.delete('/orm/movies/{movie_id}')
+curl.exe -X DELETE http://localhost:8000/orm/movies/11
+
+FOR: @app.delete('/orm/movies')
+curl.exe -X DELETE -H "Content-Type: application/json" -d "[9,10]" http://localhost:8000/orm/movies
+
+
+FOR: @app.post('/orm/actors')
+Invoke-WebRequest -Uri "http://localhost:8000/orm/actors" `
+    -Method POST `
+    -Headers @{ "Content-Type" = "application/json" } `
+    -Body '{"name":"Brad", "surname":"Pitt"}' `
+    -UseBasicParsing
+
+@app.put('/orm/actors/{actor_id}')
+Invoke-WebRequest -Uri "http://localhost:8000/orm/actors/22" `
+    -Method PUT `
+    -Headers @{ "Content-Type" = "application/json" } `
+    -Body '{"name":"Angelina", "surname":"Jolie"}' `
+    -UseBasicParsing   
+
+FOR: @app.delete('/orm/actors/{actor_id}')    
+curl.exe -X DELETE http://localhost:8000/orm/actors/22
+
+FOR: @app.delete('/orm/actors')
+curl.exe -X DELETE -H "Content-Type: application/json" -d "[20,21]" http://localhost:8000/orm/actors
+
